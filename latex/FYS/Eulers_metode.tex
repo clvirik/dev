@@ -1,0 +1,265 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{cmap}
+\usepackage{needspace}
+\usepackage[colorlinks=true, linkcolor=red!50!black, citecolor=red!50!black, urlcolor=blue]{hyperref}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    showstringspaces=false,
+	columns=fixed,
+    keepspaces=true,
+    upquote=true,
+	inputencoding=utf8,
+    frame=single,
+	tabsize=4,
+    breaklines=false,
+	    literate=
+     {æ}{{\ae}}1
+     {ø}{{\o}}1
+     {å}{{\aa}}1
+     {Æ}{{\AE}}1
+     {Ø}{{\O}}1
+     {Å}{{\AA}}1
+}
+
+\title{Eulers metode i Python}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Mål}
+Målet med oppgaven er å forstå og programmere \textit{Eulers metode} for å finne en numerisk tilnærming til løsningen av en differensialligning.
+
+\section*{Teori}
+
+En differensialligning på formen
+
+\begin{subequations}
+\begin{align}
+&\frac{dy}{dx} = f(x,y) \\
+\implies &dy = f(x,y) \, dx
+\label{eq:dy}
+\end{align}
+\end{subequations}
+beskriver hvordan den deriverte til en funksjon avhenger av både $x$ og $y$. Den kan være så enkel som
+\[
+f(x,y) = x,
+\]
+eller så komplisert som
+\begin{equation}
+\label{eq:vanskelig}
+f(x,y) = \arctan{\left( \frac{e^{xy}}{x^2+y^2} \right)}.
+\end{equation}
+Vanskelige utrykk er like enkle å løse numerisk som enkle utrykk!
+\newline
+
+Dersom vi kjenner startpunktet (initsialbetingelsen) $(x_0,y_0)$ kan vi bruke \textit{Eulers metode} til å tilnærme løsningen numerisk. Neste punkt $(x_1,y_1)$ er gitt ved
+\begin{subequations}
+\label{eq:step1}
+\begin{align}
+x_1 &= x_0 + dx \\
+\intertext{og}
+y_1 &= y_0 + dy \\
+\implies y_1 &= y_0 + f(x_0,y_0)\, dx \quad (\text{fra \eqref{eq:dy}}).
+\end{align}
+\end{subequations}
+Mønstret fortsetter slik:
+\begin{subequations}
+\begin{align}
+x_{2\phantom{+1}}     &= x_1 + dx, \\
+y_{2\phantom{+1}}     &= y_1 + f(x_1,y_1)\, dx,\\
+&\, \, \, \vdots  \notag\\
+x_{n+1} &= x_n + dx, \\
+y_{n+1} &= y_n + f(x_n,y_n)\, dx.
+\end{align}
+\end{subequations}
+
+\section*{Oppgave 1: Forstå metoden}
+
+Vi ser på differensialligningen
+\begin{equation}
+\frac{dy}{dx} = x + y,
+\label{eq:diff1}
+\end{equation}
+eller med andre ord har vi \[f(x,y) = x + y.\]
+Initialbetingelsen er gitt ved
+\[
+y(0) = 1,
+\]
+eller med andre ord er startpunktet $(x_0,y_0) = (0,1)$.
+\newline
+
+Du skal nå regne ut de første stegene manuelt for dette tilfellet. Bruk $dx=0.1$.
+
+\begin{enumerate}[label=\alph*)]
+\item Regn ut $x_1$ og $y_1$ ved hjelp av formelen \eqref{eq:step1}.\footnote{$(x_1,y_1) = (0.1, 1.1)$.}
+\item Regn ut $(x_2,y_2)$.\footnote{$(x_2,y_2) = (0.2, 1.22)$.}
+\item Fortsett til du går lei og konkluderer med at dette lar seg enklere gjøre i Python.\footnote{$(x_3,y_3) = (0.3, 1.362)$.\newline$\phantom{mmmmmiii} \vdots$}
+\end{enumerate}
+\newpage
+
+\section*{Oppgave 2: Parametere}
+
+Start med å definerer parameterene:
+
+\begin{lstlisting}
+x0 = 0
+x_slutt = 1
+y0 = 1
+dx = 0.1
+\end{lstlisting}
+
+\section*{Oppgave 3: Programmer funksjonen}
+
+Definer funksjonen $f(x,y)$ i Python:
+
+\begin{lstlisting}
+def f(x, y):
+    return x + y
+\end{lstlisting}
+
+
+\section*{Oppgave 4: Implementer Eulers metode}
+
+Skriv programmet:
+
+\begin{lstlisting}
+x = x0
+y = y0
+
+while x <= x_slutt:
+    y = y + f(x, y) * dx
+    x = x + dx
+    print(x, y)
+\end{lstlisting}
+
+Svar på spørsmålene:
+
+\begin{enumerate}[label=\alph*)]
+\item Hvilken linje i programmet tilsvarer formelen 
+\[
+y_{n+1} = y_n + f(x_n,y_n)\, dx?
+\]
+\item Kjør programmet og sjekk at utregningene fra oppgave 1 stemmer.
+\item Gjør Python noe dumt?
+\end{enumerate}
+
+\section*{Oppgave 5: Tegn grafen}
+
+Utvid programmet slik at du lagrer $x$- og $y$-verdiene i lister og tegner grafen ved hjelp av \lstinline|matplotlib|.
+
+\begin{lstlisting}
+x_verdier = [x0]
+y_verdier = [y0]
+
+x = x0
+y = y0
+
+while x <= x_slutt:
+    y = y + f(x, y) * dx
+    x = x + dx
+	
+    x_verdier.append(x)
+    y_verdier.append(y)
+
+import matplotlib.pyplot as plt
+
+plt.plot(x_verdier, y_verdier, "-o")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Tilnærming med Eulers metode")
+plt.grid()
+plt.show()
+\end{lstlisting}
+
+\section*{Oppgave 6: Sammenlign med eksakt løsning}
+
+Differensialligningen har eksakt løsning
+\begin{equation}
+y = 2e^{x} - x - 1
+\label{eq:yexact}
+\end{equation}
+
+\begin{enumerate}[label=\alph*)]
+\item Sjekk at dette stemmer ved å derivere $y$ og vis at 
+\[
+\frac{dy}{dx} = y + x = 2e^{x} - 1
+\]
+
+\item Definer funksjonen $y(x)$ i programmet \eqref{eq:yexact}:
+\begin{lstlisting}
+import numpy as np
+
+def y(x):
+    return 2*np.exp(x) - x - 1
+\end{lstlisting}
+
+\item Legg til følgende kode for å plotte $y(x)$:
+\Needspace{3\baselineskip}
+\begin{lstlisting}
+X = np.linspace(x0, x_slutt, 100)
+
+plt.plot(X, y(X), "--")
+\end{lstlisting}
+
+\item Undersøk hva som skjer når du velger mindre verdier for $dx$. Det er lurt å bytte ut startverdiene i toppen av koden med følgende:
+\begin{lstlisting}
+x0 = 0
+x_slutt = 2
+y0 = 1
+dx = 0.1
+\end{lstlisting}
+og endre:
+\begin{lstlisting}
+X = np.linspace(x0, x_slutt, 100)
+\end{lstlisting}
+
+\item Hva ville skjedd om du endret $dx$ uten å velge den nye definisjonen av \lstinline|antall_steg|?
+
+\end{enumerate}
+
+\section*{Bonus: Løs en uløselig differensialligning}
+
+Du skal nå løse denne differensialligningen \eqref{eq:vanskelig}
+\begin{equation*}
+\frac{dy}{dx} = f(x,y) = \arctan{\left( \frac{e^{xy}}{x^2+y^2} \right)}.
+\end{equation*}
+Alt du må gjøre er å bytte ut \lstinline|f(x, y)| med:
+\begin{lstlisting}
+def f(x, y):
+    return np.arctan(np.exp(x*y)/(x**2+y**2))
+\end{lstlisting}
+Det kan være lurt å endre på noen parametere:
+\begin{lstlisting}
+x0 = 0
+x_slutt = 5
+y0 = 0.1
+dx = 0.0001
+\end{lstlisting}
+Og også kommentere ut den eksakte løsningen fra forrige oppgave siden den ikke er løsningen for denne oppgaven:
+\begin{lstlisting}
+#plt.plot(X, y(X), "--")
+\end{lstlisting}
+
+\end{document}
