@@ -1,0 +1,150 @@
+\documentclass[a4paper,12pt]{article}
+
+% Språk og tegnsett
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{xcolor}  
+
+\usepackage[norsk]{babel}
+\usepackage{csquotes}
+
+% Marger og layout
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% APA-sitering via biblatex
+\usepackage[style=apa, backend=biber]{biblatex}
+
+% Last inn referansefil 
+\addbibresource{referanser.bib}
+
+\usepackage{setspace}
+\onehalfspacing
+
+% For lenker og DOI
+%\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,        % Seksjonslenker og TOC
+    citecolor=red!50!black, % Referanser
+    urlcolor=blue           % Nettadresser
+}
+
+\usepackage{tocloft}
+
+% Normal skrift i TOC
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+
+\DefineBibliographyStrings{norsk}{
+  andothers = {et al.},
+  editor    = {red.},
+  editors   = {red.},
+  in        = {i},
+  edition   = {utg.},
+  urlseen   = {Hentet fra},
+  and = {og},
+  %page = {s.},
+  %pages = {ss.},
+}
+
+% For norsk dato
+%\usepackage{datetime2}
+%\DTMsetup{locale=nb-NO}
+
+%\usepackage{titlesec}
+
+% Seksjoner – litt større enn små
+%\titleformat{\section}
+%  {\normalfont\large\bfseries}{\thesection}{1em}{}
+
+% Underseksjoner – behold små
+%\titleformat{\subsection}
+%  {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\title{Hva skal til for å bli en god lærer?}
+\author{Christian Lo Virik}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\abstract{Jau!} 	
+\newpage
+\tableofcontents
+\newpage
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red!50!black,        % Seksjonslenker og TOC
+    citecolor=red!50!black, % Referanser
+    urlcolor=blue           % Nettadresser
+}
+
+
+
+
+
+\section{Introduksjon}
+
+Spørsmålet i tittelen blir i det som følger ikke besvart. Hva som skal til for å bli en god lærer, kan ikke beskrives i så kort en oppgave. I stedet nevnes noen ting som forfatteren selv, samt faglitteraturen, mener kan anses som viktig. Blant annet burde en god lærer ta hensyn til klasseromsforskning, og ikke bare handle ut fra det han selv måtte tro eller føle best. Læreren burde ha kunnskap om læringsteorier og teorier om motivasjon, samt hvordan disse kan anvendes for best mulig å hjelpe elevene å lære. Videre må han være oppmerksom på at lærerens jobb ikke bare er å utdanne elevene, men også å danne dem.
+
+\section{Klasseromsforskning}
+
+Om en lærer effektivt skal kunne formidle sitt fag, slik at elevene både forstår og tilegner seg kunnskap, må han vite hva som faktisk får elevene til å lære. De fleste av oss har våre egne oppfatninger når det gjelder hvordan vi selv lærer best. Det er viktig, om ikke alltid enkelt, å huske at det vi selv mener og tror er best ikke nødvendigvis passer for elevene våre. Hvordan kan vi da vite hva som best hjelper elevene til å lære? Dette er ett av spørsmålene klasseromsforskningen forsøket å besvare på en objektiv måte.
+
+Et eksempel er Begle (1972; 1979, som referert i \cite[163]{ped7}) som viste at formell matematisk kompetanse ikke har positiv effekt på læring utover en bachelorgrad, mens det som faktisk hjelper er fagdidaktisk kompetanse (Hill, Rowan og Ball, 2005; Ball, Hill og Bass, 2005, som referert i \cite[163]{ped7}). Altså er det ikke nok å kunne sitt fag; man må også ha kunnskap om hva som kjennetegner god matematikkundervisning.
+
+Spesielt relevant for forfatteren\footnote{Som planlegger å undervise i både fysikk og matematikk, om han skulle være så heldig.} er \textbf{\textcite{Elina2022}} som kritiserer vanlig fysikkundervisnings syn på matematikk. De argumenterer for at matematikken ikke kun burde ses på som et hjelpemiddel for modellering og problemløsing, men heller som et slags språk. Dette vil, i følge forfatterne, lede til dypere forståelse blant elevene.
+
+\section{Undervisningsopplegget}
+
+\section*{Læringsteorier og motivasjon}
+
+Et sentralt og viktig spørsmål for lærere er hvordan og hvorfor vi læring finner sted. Som svar på dette er det utviklet fire læringsteorier som samlet gir oss et relativt helhetlig bilde. Disse omfatter behavioristisk, kognitiv, pragmatisk, og sosiokulturell læringsteori \parencite{ped3}.
+
+\subsection*{Behavioristisk læringsteori}
+
+Behaviorismen kan sies å ha sin opprinnelse i Ivan Pavlovs (1849--1936) oppdagelse av den betingede refleksen \parencite[53]{ped3}. Innen denne teorien forstås all læring som en form for betinging, på samme måte som Pavlovs hunder lærte å assosiere lyden av en bjelle med mat. Hovedideen er at riktig atferd belønnes, og feil atferd straffes,\footnote{NB straffen trenger ikke å være voldelig.} og slik \enquote{lærer} vi oss etterhvert å gjenta ønsket atferd. Det er viktig å presisere at ikke all læring kan forstås ut fra et behavioristisk perspektiv. Et eksempel på dette er Chomsky (1959, som referert i \cite[57]{ped3}), som viste at tilegnelsen av språk ikke er basert på betinging.
+
+Vi kan også forstå motivasjon fra et behavioristisk perspektiv. \textcite[141]{ped6} skriver at \enquote{Bruk av ytre påskjøning, slik som systematisk ros, karakterar og poengskår på prøvar, blir, ifølgje teorien, ein måte å motivera elevane}. Jeg skulle også tro at lek eller konkurranse som elevene lærer å assosiere med fag også kan forstås som behavioristisk motivasjon. Det er imidlertid også lett å anvende behavioristisk motivasjonsteori helt feil. Et godt eksempel er at mange lærere gir oppmerksomhet til vanskelige elever når de bråker, og overser dem når de gjør det de skal, hvilket er feil tilnærming ifølge teorien \parencite[141]{ped6}.
+
+\subsection*{Kognitiv læringsteori}
+
+Det var Jean Piagets (1896--1980) teori om utvikling som fikk størst innflytelse på skoleverket \parencite[57]{ped3}. Han mente at kognitiv utvikling skjer på to måter: \textit{assimilasjon} når vi tar til oss ny informasjon uten at det går på bekostning av det vi kan fra før, og \textit{akkommodasjon}, som oppstår når vi får informasjon som ikke stemmer overens med det vi vet, og vi blir nødt til å endre vår måte å tenke på \parencite[58]{ped3}.
+
+Ifølge kognitiv teori er elevens motivasjon bestemt av produktet av forventningen om å oppnå et mål og verdien eleven tillegger dette målet (Wigfield \& Eccles, 2002, som referert i \cite[142]{ped6}). Om eleven enten ikke forventer å nå et mål, eller ikke ser verdien i det, vil han forbli umotivert. På den annen side vil en elev som både forventer å lykkes og ser stor verdi i målet, være sterkt motivert. En god lærer må da, for å motivere en elev, klare å overbevise ham om at han faktisk kan klare å nå målene, og at det faktisk finnes en reell nytteverdi av å nå dem.
+
+\subsection*{Pragmatisk læringsteori}
+
+Pragmatismen er, i pedagogisk sammenheng, best representert ved John Dewey (1859–-1952) \parencite[60]{ped3}. Han mente at det elevene lærte og gjorde på skolen ikke var relevant for deres liv, og at de ville lære bedre viss skolen tok mer hensyn til dette. I følge Dewey (1938; Dewey \& Bentley, 1949, som referert i \cite[62]{ped3}) lærer vi best gjennom det som kalles \textit{inquiry based learning}. Det vil si at undervisningen foregår slik at elevene lærer seg hvordan kunnskap skapes og granskes \parencite[62]{ped3}. Siden vi nå lever i en tid der ny kunnskap kommer til hele tiden, og det er uråd å si hva fremtiden vil bringe, kan \textit{inquiry based learning} lett virke mye mer nyttig enn kun enkel tilegnelse av gammel kunnskap.
+
+\textcite[61]{dewey1913interest} var kritisk til eksterne kilder for motivasjon som frykt for straff, pliktoppfyllelse, eller ønsket om å vinne. Han uttalte videre at \parencite[62]{dewey1913interest}: \enquote{The important question, however, is what specific subject-matter is so connected with the growth of the child's existing concrete capabilities as to give it a moving force}. Altså trenger vi ikke å skape motivasjon; den oppstår naturlig når undervisningsmaterialet er godt nok tilpasset elevens evner.
+
+\subsection*{Sosiokulturell læringsteori}
+
+Det var Lev. S. Vygotskijs (1896–1934) som la grunnlaget for den sosiokulturelle læringsteorien \parencite[63]{ped3}. Teorien vektlegger at læring skjer i samarbeid med andre, og ikke inne i hodet slik som Piaget mente. For eksempel er et barn avhengig av en forelder som allerede kan å telle, for selv å lære dette \parencite[67]{ped3}. For at dette skal fungere må forelderen tilpasse seg barnets behov gjennom det som refereres til som stillasbygging (Wood, Bruner \& Ross, 1976, som referert i \cite[67]{ped3}).
+
+Den sosiokulturelle teorien ser på motivasjon ikke som noe som kommer innenfra, men som noe som kommer fra samfunnet rundt oss. Om en elev er del i en klasse som er motiverte for læring, eller ellers ser på seg selv som del av en gruppe som er motivert for læring, blir han selv motivert \parencite[144]{ped6}.
+
+\section*{Danning}
+
+En god lærer skal ikke bare formidle kunnskap, men også bidra til elevenes danning. Danning handler om hvem vi er som mennesker, og hvordan vi bruker utdannelsen vår \parencite[27]{ped2}. Et sterkt eksempel på hvor viktig danning er, kommer frem hos Eidsvåg (2011, som sitert i \cite[27]{ped2}). Her får vi høre om hvordan det var velutdannede og høyt kompetente mennesker som stod bak den verste forbrytelsen i manns minne. Om det er lærerens oppgave å sikre at historiens mørkeste kapitler ikke gjentar seg, burde han ta denne meget seriøst.
+
+\section*{Konklusjon}
+Denne oppgaven har forsøkt å gi et kort innblikk i hva forfatteren selv, samt faglitteraturen, mener er viktig for å bli en god lærer. Om en aspirerende lærer har innsikt i klasseromsforskningen, kunnskap om lærings- og motivasjonsteorier, og forståelse for viktigheten av danning i skolen, er det vanskelig å konkludere med at denne definitivt ikke har det som skal til for å kunne bli en god lærer. Det er selvsagt mye mer som kan sies om denne oppgavens tema. Kanskje det viktigste er å selv være villig til å lære nye ting, og vise elevene at en selv er villig til å prøve og å feile. Slik kan læreren selv bli et forbilde for sine elevene.
+
+\section*{Merknad om bruk av kunstig intelligens}
+
+\textcite{openai_chatgpt} sier det kanskje best selv: 
+\begin{quote}
+I arbeidet med denne oppgaven er kunstig intelligens (KI) -- nærmere bestemt ChatGPT, utviklet av OpenAI -- benyttet som et støtteverktøy i forbindelse med rettskrivning, språklig bearbeiding og forbedring av enkelte formuleringer. Alt faglig innhold som ikke er eksplisitt referert til, herunder analyser, vurderinger og konklusjoner, er utelukkende utarbeidet av forfatteren selv.
+\end{quote}
+
+%\bibliographystyle{apacite}
+\printbibliography[title={Litteraturliste}]
+\end{document}

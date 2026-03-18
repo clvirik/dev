@@ -1,0 +1,517 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+%\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{cmap}
+\usepackage{needspace}
+\usepackage[colorlinks=true, linkcolor=red!50!black, citecolor=red!50!black, urlcolor=blue]{hyperref}
+\usepackage[all]{hypcap}
+\usepackage[stable]{footmisc}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{angles,quotes}
+
+\renewcommand{\qedsymbol}{QED}
+
+
+\title{Areal og volum med vektorregning}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Oppgave 1: Parallellogram i 2D}
+Vi har et parallellogram utspent av to vektorer $\vec{u}$ og $\vec{v}$. Vinkelen mellom vektorene er $\alpha$.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \draw[->, thick] (0,0) -- (3,0) node[midway, below] {$\vec{u}$};
+    \draw[->, thick] (0,0) -- (1,2) node[midway, left] {$\vec{v}$};
+    \draw[dashed] (3,0) -- (4,2) -- (1,2);
+    \draw[red, thick] (1,0) -- (1,2) node[midway, right] {$h$};
+    \draw (0.4,0) arc (0:63.4:0.4) node[pos=0.5, right] {$\alpha$};
+    \node at (2.5,1.5) [below left] {$A$};
+\end{tikzpicture}
+\caption{Parallellogram utspent av to vektorer.}
+\end{center}
+\end{figure}
+
+Vis at arealet $A$ av parallellogrammet er gitt ved 
+\begin{equation}
+	A = |\vec{u}| |\vec{v}| \sin(\alpha).
+\end{equation}
+
+
+\section*{\boldmath Oppgave 2: Areal og $2\times2$-determinant}
+
+I 2 dimensjoner er determinanten av to vektorer $\vec{u} = [u_1, u_2]$ og $\vec{v} = [v_1, v_2]$ gitt ved \[ \det(\vec{u}, \vec{v}) = \begin{vmatrix} u_1 & u_2 \\ v_1 & v_2 \end{vmatrix} = u_1v_2 - u_2v_1. \]
+
+\begin{enumerate}
+    \item[a)] Gitt $\vec{u} = [4, 1]$ og $\vec{v} = [1, 3]$, finn determinanten $\det(\vec u, \vec v)$.
+    \item[b)] Sammenlign verdien av determinanten med arealet av parallellogrammet vektorene utspenner. Dette kan du gjøre i geogebra eller for hånd.
+\end{enumerate}
+
+Poenget er at i 2 dimensjoner så gir determinanten samme svar som arealet. Dette er alltid tilfellet og vi kan derfor si at
+\begin{equation}
+\label{eq:2dlikhet}
+|\vec{u}| |\vec{v}| \sin(\alpha) =  u_1v_2 - u_2v_1.
+\end{equation}
+
+\section*{Oppgave 3: Kryssprodukt og areal i 3D}
+I 3 dimensjoner definerer vi kryssproduktet $\vec{u} \times \vec{v}$ ved hjelp av en determinant:
+\[
+\vec{u} \times \vec{v} = \begin{vmatrix} \vec{e}_x & \vec{e}_y & \vec{e}_z \\ u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \end{vmatrix}
+\]
+En viktig egenskap er at $|\vec{u} \times \vec{v}| = |\vec{u}| |\vec{v}| \sin(\alpha)$.
+
+\begin{enumerate}
+    \item[a)] La $\vec{u} = [4, 1, 0]$ og $\vec{v} = [1, 3, 0]$. Regn ut $\vec{u} \times \vec{v}$.
+    \item[b)] Hva blir lengden av denne vektoren, og hvordan samsvarer dette med det du lærte i Oppgave 1 og 2?
+	\item[c)] Finn plass i hodet ditt til å huske at $|\vec u \times \vec v|$ gir arealet til parallellogrammet utspent av $\vec u$ og $\vec v$.
+	\item[d)] Hva blir arealet av trekanten utspent av $\vec u$ og $\vec v$?
+\end{enumerate}
+
+\newpage
+
+\section*{\boldmath Oppgave 4: Volum og $3\times 3$-determinant}
+
+Vi har sett at determinanten i 2D gir arealet av parallellogrammet spent ut av to vektorer. I 3D gir determinanten oss volumet $V$ av \textit{parallellepipedet} (figur \ref{fig:parallellepiped}) mellom tre vektorer $\vec{u}, \vec{v}$ og $\vec{w}$:\phantomsection\footnote{I 4D gir determinanten oss \textit{hyper}-volumet mellom fire vektorer osv.}
+
+\[
+V = \det(\vec w,\vec u,\vec v) = \begin{vmatrix} w_1 & w_2 & w_3 \\ u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \end{vmatrix}.
+\]
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.48\textwidth}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[tdplot_main_coords, scale=1.5]
+
+% --- Define vectors ---
+\coordinate (u) at (2,0,0);
+\coordinate (v) at (0,2,0);
+\coordinate (w) at (1.1,1.1,2);
+
+% --- Main vectors ---
+\draw[->, thick] (0,0,0) -- (u) node[anchor=north east]{$\vec{u}$};
+\draw[->, thick] (0,0,0) -- (v) node[anchor=north west]{$\vec{v}$};
+\draw[->, thick] (0,0,0) -- (w) node[anchor=south]{$\vec{w}$};
+\draw[blue,->, thick] (0,0,0) -- (0,0,2.5) node[anchor=east]{$\vec{u} \times \vec v $};
+
+% --- Helper lines ---
+\draw[red, thick] (w) -- ($(w)+(0,0,-2)$) node[midway, right] {$h$};
+\draw[dashed] (0,0,0) -- ($(w)+(0,0,-2)$);
+
+\coordinate (A) at ($0.6*0.44*(w)$);
+\coordinate (B) at ($0.6*(0.7,0.7,0)$);
+
+\draw (A) to[bend left=25] node[midway,right] {$\theta$} (B);
+
+\draw[dashed] (u) -- ($(u)+(v)$) -- (v);
+\draw[dashed] (w) -- ($(w)+(u)$) -- ($(w)+(u)+(v)$) -- ($(w)+(v)$) -- cycle;
+
+\draw[dashed] (u) -- ($(u)+(w)$);
+\draw[dashed] ($(u)+(v)$) -- ($(u)+(v)+(w)$);
+\draw[dashed] (v) -- ($(v)+(w)$);
+
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+
+% Example 2D diagram
+\coordinate (O) at (0,0);
+\coordinate (X) at (1.6,0);
+\coordinate (W) at (1.6,2);
+
+% Example 2D diagram
+\coordinate (O) at (0,0);
+\coordinate (X) at (1.6,0);
+\coordinate (W) at (1.6,2);
+
+% Example 2D diagram
+\draw[dashed] (O) -- (X);
+\draw[blue,->, thick] (O) -- (0,4) node[anchor=east] {$\vec u \times \vec v$};
+\draw[->, thick] (O) -- (W) node[anchor=south] {$\vec w$};
+\draw[red, thick] (W) -- (X) node[midway, right] {$h$};
+
+% Angle arc
+\draw pic[draw, angle radius=0.8cm] {angle = X--O--W};
+
+% Label
+\node at (0.5,0.25) {$\theta$};
+
+\end{tikzpicture}
+\end{minipage}
+\caption{Parallellepiped utspent av $\vec{u}, \vec{v}$ og $\vec{w}$. Vinkelen mellom $\vec w$ og $uv$-planet er $\theta$.}
+\label{fig:parallellepiped}
+\end{figure}
+
+
+\begin{enumerate}[label=\alph*)]
+	\item En annen måte å skrive denne determinanten på er $(\vec u \times\vec v) \cdot \vec w$. Vis at denne gir rett formel for volumet av parallellepipedet:\footnote{Hint: Finn uttrykk for både $h$ og $(\vec u \times\vec v) \cdot \vec w$ ved hjelp av $\theta$.} \[V=Ah,\]der $A$ er arealet av grunnflaten og $h$ er høyden.
+    \item Regn ut volumet av parallellepipedet utspent av $\vec{u}=[3,0,0]$, $\vec{v}=[0,4,0]$ og $\vec{w}=[1,1,5]$.
+	\item Regn ut volumet av parallellepipedet utspent av $\vec{u}=[3,0,0]$, $\vec{v}=[0,4,0]$ og $\vec{w}=[-1,-1,-5]$. Hvorfor tror du svaret nå ble negativt?\footnote{Bruk høyerehåndsregelen.}
+\end{enumerate}
+
+\section*{Bonus: Vis at determinanten gir areal i 2D}
+
+Du skal altså vise dette:
+\[\det(\vec u, \vec v)= u_1v_2 - u_2v_1 = |\vec{u}| |\vec{v}| \sin(\alpha).\]
+
+\begin{enumerate}
+
+    \item[a)] Begynn med å kvadrere determinanten og vis at den kan skrives slik:
+	\[
+		(\det(\vec u, \vec v))^2 = (u_1^2 +u_2^2)(v_1^2 +v_2^2) - (u_1v_1 + u_2v_2)^2.
+	\]
+    \item[b)] Sett inn uttrykk for skalarproduktet på koordinatform: $|\vec u|^2$, $|\vec v|^2$ og $\vec u \cdot \vec v$. Vis at vi nå kan si:
+	\[
+		(\det(\vec u, \vec v))^2 = |\vec u|^2|\vec v|^2 - (\vec u \cdot \vec v)^2.
+	\]
+	    \item[c)] Bruk uttrykket for skalarproduktet med vinkel og vis at:
+	\[
+		(\det(\vec u, \vec v))^2 = |\vec u|^2|\vec v|^2(1-\cos^2(\alpha)).
+	\]
+	    \item[d)] Fullfør beviset ved å vise at:
+	\[
+		\det(\vec u, \vec v) = |\vec u||\vec v|\sin(\alpha).
+		\tag*{\qed}
+	\]
+
+\end{enumerate}
+
+
+\appendix
+\newpage
+\section{Hvorfor gir kryssproduktet areal?}
+
+Vi vet fra geometri at arealet av et parallellogram spent ut av to vektorer er
+
+\[
+A = |\vec u|\,|\vec v|\sin\alpha
+\]
+
+der $\alpha$ er vinkelen mellom vektorene.
+
+Vi skal nå vise at dette er det samme som lengden av kryssproduktet.
+
+\subsection*{Steg 1: Kryssprodukt i koordinatform}
+
+La
+
+\[
+\vec u =
+\begin{pmatrix}
+u_1\\
+u_2\\
+u_3
+\end{pmatrix},
+\qquad
+\vec v =
+\begin{pmatrix}
+v_1\\
+v_2\\
+v_3
+\end{pmatrix}.
+\]
+
+Kryssproduktet er
+
+\[
+\vec u \times \vec v =
+\begin{pmatrix}
+u_2v_3-u_3v_2 \\
+u_3v_1-u_1v_3 \\
+u_1v_2-u_2v_1
+\end{pmatrix}.
+\]
+
+Lengden av denne vektoren er
+
+\[
+|\vec u \times \vec v|
+=
+\sqrt{
+(u_2v_3-u_3v_2)^2
++
+(u_3v_1-u_1v_3)^2
++
+(u_1v_2-u_2v_1)^2.
+}
+\]
+
+\subsection*{Steg 2: Kvadrer lengden}
+
+Vi ser først på kvadratet av lengden:
+
+\[
+|\vec u \times \vec v|^2
+=
+(u_2v_3-u_3v_2)^2
++
+(u_3v_1-u_1v_3)^2
++
+(u_1v_2-u_2v_1)^2.
+\]
+
+Hvis vi utvikler kvadratene og samler leddene, får vi
+
+\[
+|\vec u \times \vec v|^2
+=
+(u_1^2+u_2^2+u_3^2)(v_1^2+v_2^2+v_3^2)
+-
+(u_1v_1+u_2v_2+u_3v_3)^2.
+\]
+
+\subsection*{Steg 3: Bruk prikkproduktet}
+
+Vi kjenner to viktige størrelser:
+
+Lengden av vektorene
+
+\[
+|\vec u|^2 = u_1^2+u_2^2+u_3^2
+\]
+
+\[
+|\vec v|^2 = v_1^2+v_2^2+v_3^2,
+\]
+
+og prikkproduktet
+
+\[
+\vec u\cdot\vec v
+=
+u_1v_1+u_2v_2+u_3v_3
+=
+|\vec u||\vec v|\cos\alpha.
+\]
+
+Dermed kan vi skrive
+
+\[
+|\vec u \times \vec v|^2
+=
+|\vec u|^2 |\vec v|^2
+-
+(\vec u\cdot\vec v)^2.
+\]
+
+Setter vi inn uttrykket for prikkproduktet får vi
+\begin{align*}
+|\vec u \times \vec v|^2 
+&= |\vec u|^2 |\vec v|^2 - (|\vec u||\vec v|\cos\alpha)^2 \\
+&= |\vec u|^2 |\vec v|^2 (1-\cos^2\alpha).
+\end{align*}
+
+\subsection*{Steg 4: Bruk trigonometrisk identitet}
+
+Vi bruker identiteten
+
+\[
+1-\cos^2\alpha = \sin^2\alpha.
+\]
+
+Dermed får vi
+
+\[
+|\vec u \times \vec v|^2
+=
+|\vec u|^2 |\vec v|^2 \sin^2\alpha.
+\]
+
+Tar vi kvadratroten får vi
+
+\[
+|\vec u \times \vec v|
+=
+|\vec u|\,|\vec v|\,\sin\alpha. \tag*{\qed}
+\]
+
+\subsection*{Konklusjon}
+
+Lengden av kryssproduktet er altså nøyaktig lik arealet av parallellogrammet spent ut av vektorene:
+
+\[
+A = |\vec u \times \vec v|.
+\]
+
+Dette forklarer hvorfor kryssproduktet brukes til å finne areal i rommet.
+\newpage
+\section{Hvorfor gir skalarproduktet vinkelen mellom to vektorer?}
+
+Skalarproduktet kan beregnes på to måter:
+
+\[
+\vec u \cdot \vec v = u_1v_1 + u_2v_2 + u_3v_3
+\]
+
+og
+
+\[
+\vec u \cdot \vec v = |\vec u|\,|\vec v|\cos\alpha,
+\]
+
+der $\alpha$ er vinkelen mellom vektorene. Vi skal vise hvorfor disse to uttrykkene er like.
+
+\subsection*{Steg 1: Start med lengden av $\vec u-\vec v$}
+
+La
+
+\[
+\vec u =
+\begin{pmatrix}
+u_1\\
+u_2\\
+u_3
+\end{pmatrix},
+\qquad
+\vec v =
+\begin{pmatrix}
+v_1\\
+v_2\\
+v_3
+\end{pmatrix}.
+\]
+
+Da er
+
+\[
+\vec u - \vec v =
+\begin{pmatrix}
+u_1-v_1\\
+u_2-v_2\\
+u_3-v_3
+\end{pmatrix}.
+\]
+
+Lengden av denne vektoren er
+
+\[
+|\vec u-\vec v|^2 =
+(u_1-v_1)^2 + (u_2-v_2)^2 + (u_3-v_3)^2.
+\]
+
+\subsection*{Steg 2: Utvid uttrykket}
+
+Utvider vi kvadratene får vi
+
+\[
+|\vec u-\vec v|^2 =
+u_1^2+u_2^2+u_3^2
++
+v_1^2+v_2^2+v_3^2
+-
+2(u_1v_1+u_2v_2+u_3v_3).
+\]
+
+Vi kjenner igjen
+
+\[
+|\vec u|^2 = u_1^2+u_2^2+u_3^2
+\]
+
+\[
+|\vec v|^2 = v_1^2+v_2^2+v_3^2.
+\]
+
+Dermed får vi
+
+\[
+|\vec u-\vec v|^2 =
+|\vec u|^2 + |\vec v|^2 - 2(u_1v_1+u_2v_2+u_3v_3).
+\]
+
+\subsection*{Steg 3: Sammenlign med cosinussetningen}
+
+Hvis vi ser på trekanten som dannes av $\vec u$, $\vec v$ og $\vec u-\vec v$, gir cosinussetningen
+
+\[
+|\vec u-\vec v|^2 =
+|\vec u|^2 + |\vec v|^2 - 2|\vec u||\vec v|\cos\alpha.
+\]
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.5]
+% Vectors
+\coordinate (O) at (0,0);
+\coordinate (U) at (2,0.5);
+\coordinate (V) at (1,1.8);
+
+% Draw vectors u and v
+\draw[->, thick, blue] (O) -- (U) node[midway, below] {$\vec u$};
+\draw[->, thick, red] (O) -- (V) node[midway, left] {$\vec v$};
+
+% Draw u - v
+\draw[->, thick, green!60!black] (V) -- (U) node[midway, above right] {$\vec u-\vec v$};
+
+% Angle alpha
+\pic[draw, angle radius=0.6cm] {angle = U--O--V};
+\node at (0.45,0.3) {$\alpha$};
+\end{tikzpicture}
+
+\end{figure}
+
+\subsection*{Steg 4: Sammenlign uttrykkene}
+
+Vi har nå to uttrykk for $|\vec u-\vec v|^2$:
+
+\[
+|\vec u|^2 + |\vec v|^2 - 2(u_1v_1+u_2v_2+u_3v_3)
+\]
+
+og
+
+\[
+|\vec u|^2 + |\vec v|^2 - 2|\vec u||\vec v|\cos\alpha.
+\]
+
+Dermed må
+
+\[
+u_1v_1+u_2v_2+u_3v_3
+=
+|\vec u||\vec v|\cos\alpha. \tag*{\qed}
+\]
+
+\subsection*{Konklusjon}
+
+Skalarproduktet kan derfor skrives på to måter:
+
+\[
+\vec u\cdot\vec v
+=
+u_1v_1+u_2v_2+u_3v_3\,\,\,\,
+\land\,\,\,\,
+\vec u\cdot\vec v
+=
+|\vec u||\vec v|\cos\alpha.
+\]
+
+Dette gjør det mulig å finne vinkelen mellom to vektorer:
+
+\[
+\cos\alpha =
+\frac{\vec u\cdot\vec v}{|\vec u||\vec v|}.
+\]
+
+\end{document}
