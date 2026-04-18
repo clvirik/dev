@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{article}
+
+% Språk og tegnsett
+\usepackage{fontspec}
+%\setmainfont{Times New Roman}
+\usepackage{xcolor}  
+
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+% Marger og layout
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% APA-sitering via biblatex
+\usepackage[style=apa, backend=biber]{biblatex}
+
+% Last inn referansefil 
+\addbibresource{referanser.bib}
+
+\usepackage{setspace}
+\onehalfspacing
+
+% For lenker og DOI
+%\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+
+
+
+
+% For norsk dato
+%\usepackage{datetime2}
+%\DTMsetup{locale=nb-NO}
+
+%\usepackage{titlesec}
+
+% Seksjoner – litt større enn små
+%\titleformat{\section}
+%  {\normalfont\large\bfseries}{\thesection}{1em}{}
+
+% Underseksjoner – behold små
+%\titleformat{\subsection}
+%  {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red!50!black,        % Seksjonslenker og TOC
+    citecolor=red!50!black, % Referanser
+    urlcolor=blue           % Nettadresser
+}
+
+\title{Research Statement}
+\author{Christian Lo Virik}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+My research interests lie primarily in general relativity (GR), quantum field theory (QFT), and their intersection. In particular, I am interested in how they relate to black hole formation and evaporation, and I have experience with the semiclassical approach. I would very much like to work with deeper theories on the subject – my ultimate goal being contributing to our understanding of quantum gravity (QG).\newline
+
+During my master’s studies at the University of Oslo, I worked with QFT in curved spacetime. My master’s thesis, supervised by Joakim Bergli, focused on black hole formation and evaporation when accounting for Hawking radiation. The question that had intrigued me for a long time was whether accounting for Hawking radiation could prevent the formation of an event horizon during gravitational collapse.\newline
+
+I soon learned that using the outgoing Vaidya metric to model Hawking radiation, it is possible for a collapsing shell to evaporate completely before an event horizon forms. This was, however, insufficient to answer the question in the affirmative as vacuum polarization also contributes to the renormalized stress tensor making the ingoing Vaidya metric more appropriate. With the ingoing Vaidya metric there is no chance for Hawking radiation to prevent the formation of an event horizon.\newline
+
+Although the outgoing Vaidya metric does not seem to describe black hole evaporation, there is still research and disagreements on the topic which I find interesting. For instance, \textcite{Baccetti_2018} and \textcite{Chen_2018} disagree on whether a collapsing massive infinitesimally thin shell evaporates before an event horizon forms. While \textcite{Chen_2018} and \textcite{Kawai_2013} agree that an infinitesimal null shell does not evaporate before crossing the event horizon, the latter claims that a null shell of finite thickness does. As a continuation of this research, I would be interested in finding out why \textcite{Baccetti_2018} and \textcite{Chen_2018} disagree, and also whether considering a massive shell of finite thickness leads to horizon avoidance in the same way \textcite{Kawai_2013} found for a null shell.\newline
+
+More broadly, I am interested in learning as much as possible about QFT, GR, and of course QG. During my master’s studies I took a course on supersymmetry and wrote a short assignment on string theory, for which I read \textcite{Zwiebach_2009} and some of \textcite{Polchinski_1998}. Although I do not have an intuitive understanding of operator product expansions in conformal field theory nor integration over metric spaces, I would cherish the opportunity to learn and work on string theory during my PhD. I am also familiar with the renormalization group in both statistical mechanics and in QFT.
+
+
+
+%\bibliographystyle{apacite}
+\printbibliography%[title={Litteraturliste}]
+\end{document}

@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/chrvir/dev/FYS1/media/videos/feyn/480p15/partial_movie_files/FeynmanDiagram/1584795214_1111361254_223132457.mp4'
+file 'file:C:/Users/chrvir/dev/FYS1/media/videos/feyn/480p15/partial_movie_files/FeynmanDiagram/4072820271_3331242912_1960058072.mp4'
+file 'file:C:/Users/chrvir/dev/FYS1/media/videos/feyn/480p15/partial_movie_files/FeynmanDiagram/4072820271_2496135822_948992250.mp4'
+file 'file:C:/Users/chrvir/dev/FYS1/media/videos/feyn/480p15/partial_movie_files/FeynmanDiagram/4072820271_2118640520_2844772838.mp4'
+file 'file:C:/Users/chrvir/dev/FYS1/media/videos/feyn/480p15/partial_movie_files/FeynmanDiagram/4072820271_4204980501_1714270810.mp4'
+file 'file:C:/Users/chrvir/dev/FYS1/media/videos/feyn/480p15/partial_movie_files/FeynmanDiagram/4072820271_1038707267_2840670490.mp4'

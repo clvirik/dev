@@ -1,0 +1,28 @@
+\documentclass[preview]{standalone}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tikz-feynman}
+\begin{document}
+\begin{center}
+\special{dvisvgm:raw <g id='unique000'>}
+        \begin{tikzpicture}
+            \begin{feynman}
+                % Vertices
+                \vertex (a) at (0,1) {$e^-$};
+                \vertex (b) at (0,-1) {$e^-$};
+                \vertex (c) at (4,1) {$e^-$};
+                \vertex (d) at (4,-1) {$e^-$};
+
+                % Diagram edges
+                \diagram* {
+                    (a) -- [fermion] (c),
+                    (b) -- [fermion] (d),
+                    (a) -- [photon, edge label=\(\gamma\)] (b),
+                };
+            \end{feynman}
+        \end{tikzpicture}
+        \special{dvisvgm:raw </g>}
+\end{center}
+\end{document}

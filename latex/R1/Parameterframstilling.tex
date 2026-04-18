@@ -1,0 +1,354 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[norwegian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\newcommand{\D}{\mathrm{d}}
+\usepackage[colorlinks=true, linkcolor=red!50!black, citecolor=red!50!black, urlcolor=blue]{hyperref}
+
+\geometry{margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{R1}
+\lhead{Parameterframstilling}
+\rfoot{\thepage}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    upquote=true
+}
+
+\title{Introduksjon til parameterframstilling og vektorfunksjoner}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Newtons første lov}
+
+I én dimensjon er rettlinjet bevegelse med konstant fart beskrevet av en lineær funksjon som 
+\[
+x(t) = 2t-2,
+\]
+der $x$ er posisjon i meter og $t$ er tid i sekunder. Vi finner farta $v$ ved å se på stigningstallet eller ved å derivere. Uansett får vi at
+\[
+v(t) = \frac{dx}{dt} = 2,
+\]
+og farta er med andre ord konstant 2 m/s. Akselerasjonen $a$ finner vi ved å derivere farta, hvilket gir
+\[
+a(t) = \frac{dv}{dt} = 0.
+\]
+Akselerasjonen er altså konstant 0 m/s$^2$.
+
+Om akselerasjonen er lik null, vil et objekt bevege seg i rett linje med konstant fart. Dette kalles ofte Newtons første lov.
+
+\section*{To dimensjoner}
+
+Du skal nå se på rettlinjet bevegelse med konstant fart i to dimensjoner.
+
+\subsection*{Oppgave 1: Parameterframstilling}
+
+Det er flere måter å beskrive bevegelse i to dimensjoner. Den første vi skal se på er \textit{parameterframstilling}. Denne minner også mest om eksemplet fra én dimensjon. La
+
+\[
+l:
+\begin{cases}
+x(t)=2t - 2 \\
+y(t)=\phantom{2}t-2
+\end{cases},\, 0 \leq t \leq 10.
+\]
+Vi sier at linja $l$ er gitt ved $x(t)$ og $y(t)$ for $t$ mellom 0 og 10.
+
+\begin{enumerate}[label=\alph*)]
+\item For å bruke parameterframstilling i GeoGebra må du bruke denne funksjonen:
+\begin{lstlisting}
+Kurve(<Uttrykk>,<Uttrykk>,<Parametervariabel>,<Startverdi>,<Sluttverdi>)
+\end{lstlisting}
+Skriv følgende i GeoGebra:
+\begin{lstlisting}
+l = Kurve(2t-2, t-2, t, 0, 10)
+\end{lstlisting}
+
+\item Hva representerer endepunktene på grafen til $l$?
+\end{enumerate}
+
+
+\subsection*{Oppgave 2: Punkt}
+
+Vi kan også beskrive bevegelsen som et punkt $A$ med koordinater $(x(t),y(t))$. I dette tilfellet blir koordinatene $(2t-2,t-2)$.
+
+\begin{enumerate}[label=\alph*)]
+\item Legg til en \lstinline{Glider} for $t$. Skriv følgende i GeoGebra:
+\begin{lstlisting}
+t = 0
+\end{lstlisting}
+Høyereklikk på \lstinline{t} og velg \lstinline{Lag glider}.
+
+Høyereklikk på \lstinline{t} igjen og velg \lstinline{Innstillinger}. Gå til \lstinline{Glider} og sett \lstinline{Min} til 0, \lstinline{Maks} til 10, og \lstinline{Animasjonstrinn} til 0.01.
+
+\item Legg til punktet $A$, skriv:
+\begin{lstlisting}
+A = (l(t))
+\end{lstlisting}
+Dette har samme effekt som å skrive \lstinline{A = (2t-2,t-2)}.
+\item Animer $t$ ved å trykke på startknappen. Hva slags bevegelse observerer du?
+\item Hvor langt har punktet $A$ beveget seg fra $t=0$ til $t=10$?\footnote{$\Delta s = 10\sqrt{5}$ m $\approx 22.4$ m.}
+\item Hva er hastigheten?\footnote{$v = \sqrt 5$ m/s $\approx 2.24$ m/s.}
+\end{enumerate}
+
+\subsection*{Oppgave 3: Vektorfunksjon}
+
+Den siste\footnote{Men kanskje også beste måten.} måten å beskrive bevegelsen på er med en \textit{vektorfunksjon}. Denne får navnet posisjonsvektor $\vec r(t)$, og er gitt ved
+\[\vec r(t) = \overrightarrow{OA}.\]
+Med andre ord er $\vec r (t)$ en vektor som peker på punktet der det er akkurat nå. Vi bruker vanlig vektornotasjon:
+\[
+\vec r(t) = 
+\begin{pmatrix}
+x(t) \\
+y(t)
+\end{pmatrix} =
+\begin{pmatrix}
+2t-2 \\
+t-2
+\end{pmatrix}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Legg til $\vec r (t)$ i GeoGebra. Skriv følgende:
+\begin{lstlisting}
+r(t) = Vektor(A)
+\end{lstlisting}
+
+\item Fartsvektoren $\vec v(t)$ er gitt som den deriverte av posisjonsvektoren $\vec r(t)$:
+\[ \vec v(t) = \frac{d\vec r}{dt}. 
+\]
+Vis / argumenter for / velg å tro at \[ \vec v(t) = \begin{pmatrix}
+2 \\
+1
+\end{pmatrix}.\]
+
+\item Det går selvsagt også an å gjøre dette i GeoGebra. Skriv følgende:
+\begin{lstlisting}
+b = Derivert(l)
+v = Vektor(A, A + b(t))
+\end{lstlisting}
+Det kan være en idé å endre farge på $\vec v$. Det er også lurt å skjule $b(t)$ siden denne kun er en hjelpefunksjon for å nå $\vec v$.\newline
+
+Finn hastigheten $|\vec v(t)|$ og sammenlign med 2 e).
+
+\item Bruk samme strategi for akselerasjonsvektoren $\vec a(t)$. Altså skriv:
+\begin{lstlisting}
+c = Derivert(b)
+a = Vektor(A, A + c(t))
+\end{lstlisting}
+
+Hvorfor tror du $\vec a$ ikke synes?
+
+
+
+\end{enumerate}
+
+
+\section*{Bølgebevegelse}
+
+Siden du har vært flink pike/dreng og gjort som fortalt, kan du nå enkelt studere andre bevegelser. La f.eks.
+
+\[
+l:
+\begin{cases}
+x(t)=t \\
+y(t)=\sin(t)
+\end{cases},\, 0\leq t \leq 10.
+\]
+
+
+\begin{enumerate}[label=\alph*)]
+\item Alt du må gjøre er å endre på definisjonen av $l$ slik at det står:
+\begin{lstlisting}
+l = Kurve(t, sin(t), t, 0, 10)
+\end{lstlisting}
+i stedet for:
+\begin{lstlisting}
+l = Kurve(2t-2, t-2, t, 0, 10)
+\end{lstlisting}
+
+\item Hva blir utrykket for posisjonsvektoren $\vec r(t)$?
+\item Hva blir utrykket for fartsvektoren $\vec v(t)$ og akselerasjonsvektoren $\vec a(t)$?
+
+\item Når er akselerasjonen størst? Hvordan ser grafen ut da? Hva har dette med bilkjøring å gjøre?
+
+\end{enumerate}
+
+Det er nok ikke dumt å lagre denne GeoGebra-fila.
+
+\section*{Båtkollisjon}
+Du skal i det som følger finne en måte å avverge båtkollisjoner på. Du burde åpne et nytt GeoGebra-vidu.
+
+\subsection*{1. Tilfelle}
+To båter segler med konstant fart på havet. Båtene er gitt som $a$ og $b$ og de har parameterframstilling:
+
+\[
+a:
+\begin{cases}
+x(t)=2t - 2 \\
+y(t)=\phantom{2}t-2
+\end{cases},\, 0 \leq t \leq 10; \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, b:
+\begin{cases}
+x(t)=-t + 10 \\
+y(t)=\,\,3t-4
+\end{cases},\, 0 \leq t \leq 10
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Legg både $a$ og $b$ inn i GeoGebra. 
+\begin{lstlisting}
+a = Kurve(2t-2, t-2, t, 0, 10)
+b = Kurve(-t+10, 3t-4, t, 0, 10)
+\end{lstlisting}
+Tror du båtene vil kollidere?
+\item Legg til en glider for $t$. Legg deretter til punktene $A$ og $B$.
+\begin{lstlisting}
+A = (a(t))
+B = (b(t))
+\end{lstlisting}
+Kolliderer båtene?
+\item Finn $\overrightarrow{AB}$. I GeoGebra kan du skrive:
+\begin{lstlisting}
+AB = Vektor(A,B)
+\end{lstlisting}
+Hva representerer denne vektoren?
+
+\item Vis ved regning at $\overrightarrow{AB}$ er gitt ved
+\[
+\overrightarrow{AB} =
+\begin{pmatrix}
+-3t + 12 \\
+2t -2
+\end{pmatrix}.
+\]
+Hvordan kan du bruke dette til å vise at båtene ikke kolliderer?
+\end{enumerate}
+
+
+\subsection*{2. Tilfelle}
+To båter segler med konstant fart på havet. Båtenes bevegelser er gitt ved parameterframstilling:
+
+\[
+l:
+\begin{cases}
+x(t)=3t - 2 \\
+y(t)=\phantom{3}t-6
+\end{cases},\, 0 \leq t \leq 10; \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, m:
+\begin{cases}
+x(t)=2t + 5 \\
+y(t)=-8t+57
+\end{cases},\, 0 \leq t \leq 10
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Finn ut om båtene kolliderer.
+\item Legg inn vektoren $\vec r(t)$ mellom båtene.
+\item Vis at denne vektoren er gitt ved:
+\[
+\vec r(t) =
+\begin{pmatrix}
+-t+7 \\
+-9t +63
+\end{pmatrix} = (t-7)
+\begin{pmatrix}
+-1\\
+-9
+\end{pmatrix}.
+\]
+Hvordan kan du se at disse to båtene vil kollidere?
+
+\item Bruk det du har lært til å foreslå hvordan båter kan finne ut om de er på kollisjonskurs, og også foreslå hvordan de kan unngå å kollidere når de har funnet ut at de er på en slik kollisjonskurs.
+
+\end{enumerate}
+
+\section*{Fra punkt til linje}
+
+Ei vanlig oppgave er å måtte finne avstanden fra punkt til linje.
+
+\subsection*{Oppgave 1:}
+
+En båt $B$ segler med konstant fart på havet. Posisjonen er gitt ved parameterframstillinga
+\[
+b:
+\begin{cases}
+x(t)=3t \\
+y(t)=-8t+5
+\end{cases}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Legg inn i GeoGebra parameterframstillinga $b$, punktet $B$, og posisjonsvektoren $\vec r(t) = \overrightarrow{OB}$. For punktet og vektoren må du huske å legge inn en glider for $t$.
+
+\item Bruk posisjonsvektoren 
+\[
+\vec r(t)= 
+\begin{pmatrix}
+3t\\
+-8t+5
+\end{pmatrix}
+\]
+
+til å vise at avstanden fra origo $O$ til båten $B$ er gitt ved
+\[
+|\vec r(t)| = \sqrt{73t^2-80t +25}.
+\]
+
+\item Når er båten nærmest origo?\footnote{Hint: Her må du derivere for å finne ut når $|\vec r(t)|$ er minst. Avstanden er minst når også den kvadrerte avstanden $|\vec r(t)|^2$ er minst. Altså kan du derivere $|\vec r(t)|^2$ i stedet for $|\vec r(t)|$ for å løse for $t$.}\textsuperscript{,}\footnote{$t_{\text{min}}= \frac{10}{19} \approx 0.526$.} Hvor langt unna er den da?\footnote{$|\vec r(t_{\text{min}})| = \frac{15\sqrt 5}{19} \approx 1.77$.}
+
+Gitt punkt $A(3,4)$.
+
+\item Vis at vektoren fra punktet til båten er gitt ved \[
+\overrightarrow{AB} = 
+\begin{pmatrix}
+3t-3\\
+-8t+1
+\end{pmatrix}
+\]
+\item Hvor nærme kommer båten $A$?\footnote{$|\overrightarrow{AB}_{\text{min}}| = \frac{21\sqrt{73}}{73} \approx 2.46.$}
+
+\item Hvor nærme hverandre kommer de to båtene fra 1. tilfelle over?\footnote{$|\vec s_\text{min}| = \frac{18\sqrt{13}}{13} \approx 4.99.$} Husk at separasjonsvektoren mellom båtene $\vec s$ var gitt ved
+\[
+\vec s =
+\begin{pmatrix}
+-3t + 12 \\
+2t -2
+\end{pmatrix}.
+\]
+
+\end{enumerate}
+\newpage
+\subsection*{Oppgave 2:}
+
+Gitt linja
+\[
+y = -2x+10.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Finn ei parameterframstilling for linja.\footnote{Du kan velge denne fritt. Et enkelt valg er $x(t) = t$, da blir $y(t)=-2t +10$.}
+\item Finn et utrykk for posisjonsvektoren $\vec r(t)$ for denne parametriseringa.
+\item Finn korteste avstand fra origo til linja.\footnote{$|\vec r_\text{min}| = 2\sqrt 5 \approx 4.47.$}
+
+\item Finn korteste avstand fra punktet $(5,0)$ til linja.
+\end{enumerate}
+\end{document}

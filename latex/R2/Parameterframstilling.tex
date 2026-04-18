@@ -1,0 +1,358 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[norwegian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\newcommand{\D}{\mathrm{d}}
+\usepackage[colorlinks=true, linkcolor=red!50!black, citecolor=red!50!black, urlcolor=blue]{hyperref}
+
+\geometry{margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{R2}
+\lhead{Parameterframstilling og vektorfunksjoner}
+\rfoot{\thepage}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    upquote=true
+}
+
+\title{Parameterframstilling og vektorfunksjoner}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Oppgave 1: Parameterframstilling}
+
+Det er flere måter å beskrive bevegelse i flere dimensjoner. Den første vi skal se på er \textit{parameterframstilling}. La
+
+\[
+l:
+\begin{cases}
+x(t)=4t - 2 \\
+y(t)=4t+2 \\
+z(t)= -2t +6
+\end{cases},\, 0 \leq t \leq 5.
+\]
+Vi sier at linja $l$ er gitt ved $x(t)$, $y(t)$ og $z(t)$ for $t$ mellom 0 og 5.
+
+\begin{enumerate}[label=\alph*)]
+\item For å bruke parameterframstilling i GeoGebra må du bruke denne funksjonen:
+\begin{lstlisting}
+Kurve(<Uttrykk>,<Uttrykk>,<Uttrykk>,<Parametervariabel>,<Startverdi>,<Sluttverdi>)
+\end{lstlisting}
+Skriv følgende i GeoGebra:
+\begin{lstlisting}
+l = Kurve(4t-2, 4t+2, -2t+6, t, 0, 5)
+\end{lstlisting}
+
+\item Hva representerer endepunktene på grafen til $l$?
+\end{enumerate}
+
+
+\subsection*{Oppgave 2: Punkt}
+
+Vi kan også beskrive bevegelsen som et punkt $A$ med koordinater $(x(t),y(t),z(t))$. I dette tilfellet blir koordinatene $(4t-2,4t+2,-2t+6)$.
+
+\begin{enumerate}[label=\alph*)]
+\item Legg til en \lstinline{Glider} for $t$. Skriv følgende i GeoGebra:
+\begin{lstlisting}
+t = 0
+\end{lstlisting}
+Høyereklikk på \lstinline{t} og velg \lstinline{Lag glider}.
+
+Høyereklikk på \lstinline{t} igjen og velg \lstinline{Innstillinger}. Gå til \lstinline{Glider} og sett \lstinline{Min} til 0, \lstinline{Maks} til 5, og \lstinline{Animasjonstrinn} til 0.01.
+
+\item Legg til punktet $A$, skriv:
+\begin{lstlisting}
+A = l(t)
+\end{lstlisting}
+Dette har samme effekt som å skrive \lstinline{A = (4t-2,4t+2,-2t+6)}.
+\item Animer $t$ ved å trykke på startknappen. Hva slags bevegelse observerer du?
+\item Hvor langt har punktet $A$ beveget seg fra $t=0$ til $t=5$?\footnote{$\Delta s = 3$.}
+\item Hva er hastigheten?\footnote{$v = 3/5$.}
+\end{enumerate}
+
+\subsection*{Oppgave 3: Vektorfunksjon}
+
+Den siste\footnote{Men kanskje også beste måten.} måten å beskrive bevegelsen på er med en \textit{vektorfunksjon}. Denne får navnet posisjonsvektor (ofte $\vec r(t)$), og er gitt ved
+\[\vec r(t) = \overrightarrow{OA}.\]
+Med andre ord er posisjonsvektoren $\vec r (t)$ en vektor som peker på punktet der det er akkurat nå. Vi bruker vanlig vektornotasjon:
+\[
+\vec r(t) = 
+\begin{pmatrix}
+x(t) \\
+y(t) \\
+z(t)
+\end{pmatrix} =
+\begin{pmatrix}
+4t-2 \\
+4t+2 \\
+-2t+6
+\end{pmatrix}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Legg til $\vec r (t)$ i GeoGebra. Skriv følgende:
+\begin{lstlisting}
+r(t) = Vektor(A)
+\end{lstlisting}
+
+\item Fartsvektoren $\vec v(t)$ er gitt som den deriverte av posisjonsvektoren $\vec r(t)$:
+\[ \vec v(t) = \frac{d\vec r}{dt}. 
+\]
+Vis / argumenter for / velg å tro at \[ \vec v(t) = \begin{pmatrix}
+4 \\
+4 \\
+-2
+\end{pmatrix}.\]
+
+\item Det går selvsagt også an å gjøre dette i GeoGebra. Skriv følgende:
+\begin{lstlisting}
+b = Derivert(l)
+v = Vektor(A, A + b(t))
+\end{lstlisting}
+Det kan være en idé å endre farge på $\vec v$. Det er også lurt å skjule $b(t)$ siden denne kun er en hjelpefunksjon for å nå $\vec v$.\newline
+
+Finn hastigheten $|\vec v(t)|$ og sammenlign med 2 e).
+
+\item Bruk samme strategi for akselerasjonsvektoren $\vec a(t)$. Altså skriv:
+\begin{lstlisting}
+c = Derivert(b)
+a = Vektor(A, A + c(t))
+\end{lstlisting}
+
+Hvorfor synes ikke $\vec a$?
+
+\end{enumerate}
+
+
+\section*{Generell bevegelse}
+
+Siden du har vært flink pike/dreng og gjort som fortalt, kan du nå enkelt studere andre bevegelser. La f.eks.
+
+\[
+l:
+\begin{cases}
+x(t)=\cos(2t) \\
+y(t)=\sin(2t) \\
+z(t) = t - 3
+\end{cases},\, 0\leq t \leq 5.
+\]
+
+
+\begin{enumerate}[label=\alph*)]
+\item Alt du må gjøre er å endre på definisjonen av $l$ slik at det nå står:
+\begin{lstlisting}
+l=Kurve(cos(2t), sin(2 t), t-3, t, 0, 5)
+\end{lstlisting}
+
+\item Hva blir utrykket for posisjonsvektoren $\vec r(t)$?
+\item I hvilket punkt krysses $xy$-planet?\footnote{$(\cos(6),\sin(6),0) \approx (0.96,-0.28,0)$.}
+\item Vis at fartsvektoren $\vec v(t)$ er gitt ved
+\[
+\vec v(t) =
+\begin{pmatrix}
+-2\sin(2t) \\
+2\cos(2t) \\
+1
+\end{pmatrix}.
+\]
+\item Vis at akselerasjonsvektoren $\vec a(t)$ er gitt ved
+\[
+\vec a(t) =
+\begin{pmatrix}
+-4\cos(2t) \\
+-4\sin(2t) \\
+0
+\end{pmatrix}.
+\]
+
+\end{enumerate}
+Det er nok ikke dumt å lagre denne GeoGebra-fila.
+
+\section*{To partikkler}
+Du skal i det som følger finne en måte å avverge båtkollisjoner på. Du burde åpne et nytt GeoGebra-vidu.
+
+\subsection*{1. Tilfelle}
+To partikkler beveger seg i rommet. Banene reperesenteres med følgende parameterframstillinger:
+
+\[
+a:
+\begin{cases}
+x(t)=\cos(2t) \\
+y(t)=\sin(2t)-2 \\
+z(t)=t-3
+\end{cases},\, 0 \leq t \leq 5; \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, b:
+\begin{cases}
+x(t)=t-2 \\
+y(t)=\cos(2t) \\
+z(t)=\sin(3t)
+\end{cases},\, 0 \leq t \leq 5.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Legg både $a$ og $b$ inn i GeoGebra. 
+\begin{lstlisting}
+a = Kurve(cos(2t), sin(2t), t-3, t, 0, 5)
+b = Kurve(t-2, cos(2t), sin(3t), t, 0, 5)
+\end{lstlisting}
+
+\item Legg til en glider for $t$. Legg deretter til punktene $A$ og $B$.
+\begin{lstlisting}
+A = a(t)
+B = b(t)
+\end{lstlisting}
+Kolliderer partikklene?
+\item Finn $\overrightarrow{AB}$. I GeoGebra kan du skrive:
+\begin{lstlisting}
+AB = Vektor(A,B)
+\end{lstlisting}
+Hva representerer denne vektoren?
+
+\item Vis ved regning at $\overrightarrow{AB}$ er gitt ved
+\[
+\overrightarrow{AB} =
+\begin{pmatrix}
+t-2-\cos(2t) \\
+\cos(2t) - \sin(2t)+2 \\
+\sin(3t)-t+3
+\end{pmatrix}.
+\]
+
+\item Finn $|\overrightarrow{AB}|$ og plott den i GeoGebra. Dette kan fint gjøres i CAS:
+\begin{lstlisting}
+L(x) := Vektor(b(x)-a(x))
+f(x) := abs(L(x))
+\end{lstlisting}
+$x$ representerer nå tid, du kan ikke bruke $t$ siden den ble definert som en glider tidligere.
+
+Basert på grafen til $f(x)$, kolliderer partikklene?
+
+\item Gå utifra at partikklene er kuler og at begge har radius $r=0.5$. Når kolliderer de?\footnote{$t = 1.735...$.} I hvilke punkter er partikklene da?\footnote{$A(-0.946,-0.324,-1.26)$ og $B(-0.264,-0.946,-0.880)$.}
+\end{enumerate}
+
+
+\subsection*{2. Tilfelle}
+To båter segler med konstant fart på havet. Båtenes bevegelser er gitt ved parameterframstilling:
+
+\[
+l:
+\begin{cases}
+x(t)=3t - 2 \\
+y(t)=\phantom{3}t-6
+\end{cases},\, 0 \leq t \leq 10; \,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\, m:
+\begin{cases}
+x(t)=2t + 5 \\
+y(t)=-8t+57
+\end{cases},\, 0 \leq t \leq 10
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Finn ut om båtene kolliderer.
+\item Legg inn vektoren $\vec r(t)$ mellom båtene.
+\item Vis at denne vektoren er gitt ved:
+\[
+\vec r(t) =
+\begin{pmatrix}
+-t+7 \\
+-9t +63
+\end{pmatrix} = (t-7)
+\begin{pmatrix}
+-1\\
+-9
+\end{pmatrix}.
+\]
+Hvordan kan du se at disse to båtene vil kollidere?
+
+\item Bruk det du har lært til å foreslå hvordan båter kan finne ut om de er på kollisjonskurs, og også foreslå hvordan de kan unngå å kollidere når de har funnet ut at de er på en slik kollisjonskurs.
+
+\end{enumerate}
+
+\section*{Fra punkt til linje}
+
+Ei vanlig oppgave er å måtte finne avstanden fra punkt til linje.
+
+\subsection*{Oppgave 1:}
+
+En båt $B$ segler med konstant fart på havet. Posisjonen er gitt ved parameterframstillinga
+\[
+b:
+\begin{cases}
+x(t)=3t \\
+y(t)=-8t+5
+\end{cases}.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Legg inn i GeoGebra parameterframstillinga $b$, punktet $B$, og posisjonsvektoren $\vec r(t) = \overrightarrow{OB}$. For punktet og vektoren må du huske å legge inn en glider for $t$.
+
+\item Bruk posisjonsvektoren 
+\[
+\vec r(t)= 
+\begin{pmatrix}
+3t\\
+-8t+5
+\end{pmatrix}
+\]
+
+til å vise at avstanden fra origo $O$ til båten $B$ er gitt ved
+\[
+|\vec r(t)| = \sqrt{73t^2-80t +25}.
+\]
+
+\item Når er båten nærmest origo?\footnote{Hint: Her må du derivere for å finne ut når $|\vec r(t)|$ er minst. Avstanden er minst når også den kvadrerte avstanden $|\vec r(t)|^2$ er minst. Altså kan du derivere $|\vec r(t)|^2$ i stedet for $|\vec r(t)|$ for å løse for $t$.}\textsuperscript{,}\footnote{$t_{\text{min}}= \frac{10}{19} \approx 0.526$.} Hvor langt unna er den da?\footnote{$|\vec r(t_{\text{min}})| = \frac{15\sqrt 5}{19} \approx 1.77$.}
+
+Gitt punkt $A(3,4)$.
+
+\item Vis at vektoren fra punktet til båten er gitt ved \[
+\overrightarrow{AB} = 
+\begin{pmatrix}
+3t-3\\
+-8t+1
+\end{pmatrix}
+\]
+\item Hvor nærme kommer båten $A$?\footnote{$|\overrightarrow{AB}_{\text{min}}| = \frac{21\sqrt{73}}{73} \approx 2.46.$}
+
+\item Hvor nærme hverandre kommer de to båtene fra 1. tilfelle over?\footnote{$|\vec s_\text{min}| = \frac{18\sqrt{13}}{13} \approx 4.99.$} Husk at separasjonsvektoren mellom båtene $\vec s$ var gitt ved
+\[
+\vec s =
+\begin{pmatrix}
+-3t + 12 \\
+2t -2
+\end{pmatrix}.
+\]
+
+\end{enumerate}
+\newpage
+\subsection*{Oppgave 2:}
+
+Gitt linja
+\[
+y = -2x+10.
+\]
+
+\begin{enumerate}[label=\alph*)]
+\item Finn ei parameterframstilling for linja.\footnote{Du kan velge denne fritt. Et enkelt valg er $x(t) = t$, da blir $y(t)=-2t +10$.}
+\item Finn et utrykk for posisjonsvektoren $\vec r(t)$ for denne parametriseringa.
+\item Finn korteste avstand fra origo til linja.\footnote{$|\vec r_\text{min}| = 2\sqrt 5 \approx 4.47.$}
+
+\item Finn korteste avstand fra punktet $(5,0)$ til linja.
+\end{enumerate}
+\end{document}
